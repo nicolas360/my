@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net 
+ 	http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping date-format="yyyy-MM-dd HH:mm:ss">
+		<class-a>com.zhuc.my.dozer.Book</class-a>
+		<class-b>com.zhuc.my.dozer.BookVo</class-b>
+		<field>
+			<a>name</a>
+			<b>nameVo</b>
+		</field>
+		<field>
+			<a>author</a>
+			<b>authorVo</b>
+		</field>
+		<field>
+			<a>birthday</a>
+			<b>day</b>
+		</field>
+		<field>
+			<a>bookTypeName</a>
+			<b>bookType.name</b>
+		</field>
+		<field custom-converter="com.zhuc.my.dozer.MyCustomConverter">
+			<a>source</a>
+			<b>source</b>
+		</field>
+	</mapping>
+</mappings>
