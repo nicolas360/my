@@ -40,7 +40,7 @@ public class MyServerHandler1 extends ChannelInboundHandlerAdapter {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				// ctx.close();
+				ctx.close();
 			}
 		}).start();
 	}
@@ -51,7 +51,7 @@ public class MyServerHandler1 extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 		logger.debug("server channelInactive");
-		ctx.close();
+		//		ctx.close();
 	}
 
 	/* (non-Javadoc)

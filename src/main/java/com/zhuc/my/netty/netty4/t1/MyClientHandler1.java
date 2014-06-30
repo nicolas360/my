@@ -19,7 +19,7 @@ public class MyClientHandler1 extends ChannelInboundHandlerAdapter {
 	 */
 	@Override
 	public void channelActive(final ChannelHandlerContext ctx) throws Exception {
-		logger.debug("client channelActive");
+		logger.debug("client channelActive: " + ctx);
 		//ctx.channel().writeAndFlush("[hello, 我是客户端1]");
 		ctx.writeAndFlush("[hello, 我是客户端2]");
 	}
