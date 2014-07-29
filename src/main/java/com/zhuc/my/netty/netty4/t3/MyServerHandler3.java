@@ -4,12 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.collect.Lists;
 
 /**
  * @author zhuc
@@ -27,16 +23,19 @@ public class MyServerHandler3 extends ChannelInboundHandlerAdapter {
 		logger.debug("server channelRead: " + msg);
 
 		ByteBuf buf = (ByteBuf) msg;
-		List<Byte> list = Lists.newArrayList();
+		//		List<Byte> list = Lists.newArrayList();
 
 		logger.debug("writerIndex: " + buf.writerIndex());
 
-		while (buf.isReadable()) {
-			list.add(buf.readByte());
-		}
+		//		while (buf.isReadable()) {
+		//			list.add(buf.readByte());
+		//		}
+
+		byte[] bytes = new byte[buf.readableBytes()];
+		buf.readBytes(bytes);
 
 		StringBuilder sb = new StringBuilder();
-		for (byte c : list) {
+		for (byte c : bytes) {
 			sb.append(Integer.toHexString(0xff & c) + " ");
 		}
 
