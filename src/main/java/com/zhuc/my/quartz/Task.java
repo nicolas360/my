@@ -2,6 +2,8 @@ package com.zhuc.my.quartz;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -12,8 +14,10 @@ import org.springframework.stereotype.Component;
 @Component("task")
 public class Task {
 
+	private static final Logger logger = LoggerFactory.getLogger(Task.class);
+
 	@Scheduled(cron = "*/5 * * * * ?")
 	public void test() {
-		System.out.println(new Date());
+		logger.debug(new Date().toString());
 	}
 }

@@ -18,7 +18,7 @@ public class SpringTest {
 	public static void main(String[] args) {
 		//		ApplicationContext ac = new ClassPathXmlApplicationContext("/applicationContext.xml",
 		//				"/quartz/scheduler1.8.x.spring.xml");
-		ApplicationContext ac = new ClassPathXmlApplicationContext("/applicationContext.xml",
+		ApplicationContext ac = new ClassPathXmlApplicationContext("/com/zhuc/my/quartz/applicationContext.xml",
 				"/quartz/scheduler2.x.spring.xml");
 		System.out.println(ac);
 	}
