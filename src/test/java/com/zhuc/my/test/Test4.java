@@ -22,7 +22,7 @@ public class Test4 {
 		System.out.println(new ArrayList<String>().getClass());
 
 		List<String> list = Arrays.asList(new String[] { "1", "3" });
-		list.add("4"); // error
+		//		list.add("4"); // error
 
 		List<String> list2 = new ArrayList<String>(Arrays.asList(new String[] { "1", "3" }));
 		list2.add("4"); // right
