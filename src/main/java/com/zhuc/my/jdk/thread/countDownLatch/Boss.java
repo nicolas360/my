@@ -20,6 +20,7 @@ public class Boss implements Runnable {
 		try {
 			this.downLatch.await();
 		} catch (InterruptedException e) {
+			logger.error("", e);
 		}
 		logger.debug("工人活都干完了，老板开始检查了！");
 	}

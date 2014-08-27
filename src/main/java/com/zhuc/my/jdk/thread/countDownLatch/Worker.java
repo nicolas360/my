@@ -23,7 +23,8 @@ public class Worker implements Runnable {
 		this.doWork();
 		try {
 			TimeUnit.SECONDS.sleep(ThreadLocalRandom.current().nextInt(10));
-		} catch (InterruptedException ie) {
+		} catch (InterruptedException e) {
+			logger.error("", e);
 		}
 		logger.debug(this.name + "活干完了！");
 		this.downLatch.countDown();
