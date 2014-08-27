@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.alibaba.fastjson.JSONObject;
 
 /**
- * @title 		iframe 长连接
- * @description	
- * @usage		
- * @copyright	Copyright 2012  HUAXIA Corporation. All rights reserved.
- * @company		上海华夏通信有限公司
+ * iframe 长连接
  * @author		ZHUC
  * @create		2014-6-17 上午10:24:16
  */

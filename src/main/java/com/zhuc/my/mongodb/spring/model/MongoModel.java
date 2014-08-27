@@ -4,12 +4,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.bson.types.ObjectId;
 
 /**
- * @title 		mongodb抽象Entity类
- * @description	
- * @usage		
- * @copyright	Copyright 2011  SHCMCT Corporation. All rights reserved.
- * @company		上海中移通信技术工程有限公司
- * @author		zhucheng
+ * mongodb抽象Entity类
+ * @author		zhuc
  * @create		2014-1-17 上午9:34:50
  */
 public class MongoModel {
