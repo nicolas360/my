@@ -16,7 +16,7 @@ public class Test1 {
 
 	@Before
 	public void init() {
-		redis = new Jedis("192.168.253.137", 6379);
+		redis = new Jedis("192.168.199.136", 6379);
 	}
 
 	/**

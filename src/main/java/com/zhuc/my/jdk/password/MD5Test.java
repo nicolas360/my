@@ -28,12 +28,25 @@ public class MD5Test {
 		digest.update(s.getBytes());
 		digest.update(b); // 加盐
 		byte[] after = digest.digest();
+		System.out.println(hex(after));
 
 		// 结果一致
-		System.out.println("after1: " + hex(after));
-		System.out.println("after2: " + DigestUtils.md5Hex(Bytes.concat(s.getBytes(), b)));
-		System.out.println("after: " + DigestUtils.md5Hex(s.getBytes()));
+		String salt = "1";
+		System.out.println("after1: " + md5(s, salt));
+		System.out.println("after2: " + DigestUtils.md5Hex(Bytes.concat(s.getBytes(), salt.getBytes())));
+		System.out.println("after2: " + DigestUtils.md5Hex(s + salt));
 
+		System.out.println("after: " + DigestUtils.md5Hex(s));
+
+	}
+
+	private static String md5(String str, String salt) throws NoSuchAlgorithmException {
+		MessageDigest digest = MessageDigest.getInstance("MD5");
+		digest.update(str.getBytes());
+		digest.update(salt.getBytes()); // 加盐
+		byte[] after = digest.digest();
+
+		return hex(after);
 	}
 
 	private static String hex(byte[] b) {
