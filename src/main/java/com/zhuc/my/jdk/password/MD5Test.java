@@ -6,6 +6,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.shiro.crypto.hash.Md5Hash;
 
 import com.google.common.primitives.Bytes;
 
@@ -31,13 +32,15 @@ public class MD5Test {
 		System.out.println(hex(after));
 
 		// 结果一致
-		String salt = "1";
+		String salt = "1qaz";
 		System.out.println("after1: " + md5(s, salt));
 		System.out.println("after2: " + DigestUtils.md5Hex(Bytes.concat(s.getBytes(), salt.getBytes())));
-		System.out.println("after2: " + DigestUtils.md5Hex(s + salt));
+		System.out.println("after3: " + DigestUtils.md5Hex(s + salt));
+		System.out.println("after shiro: " + new Md5Hash(salt, s).toHex()); //此方法等价于上述jdk加盐方法
+		System.out.println("after shiro: " + new Md5Hash(s, salt).toHex()); //shiro提供的方法加盐与默认的位置相反
 
 		System.out.println("after: " + DigestUtils.md5Hex(s));
-
+		System.out.println("after shiro: " + new Md5Hash(s, null).toHex());
 	}
 
 	private static String md5(String str, String salt) throws NoSuchAlgorithmException {
