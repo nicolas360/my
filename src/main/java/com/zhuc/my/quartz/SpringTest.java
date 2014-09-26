@@ -4,11 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Administrator
- * Date: 13-10-27
- * Time: 下午8:46
- * To change this template use File | Settings | File Templates.
+ * @version		2014-9-25 下午2:20:21
+ * @author		zhuc
  */
 public class SpringTest {
 
@@ -16,8 +13,11 @@ public class SpringTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//		ApplicationContext ac = new ClassPathXmlApplicationContext("/applicationContext.xml",
+		// 使用上面这行时, pom中只含quartz 1.8.x的坐标
+		//		ApplicationContext ac = new ClassPathXmlApplicationContext("/com/zhuc/my/quartz/applicationContext.xml",
 		//				"/quartz/scheduler1.8.x.spring.xml");
+
+		// 使用下面这行时, pom中只含quartz 2.x的坐标
 		ApplicationContext ac = new ClassPathXmlApplicationContext("/com/zhuc/my/quartz/applicationContext.xml",
 				"/quartz/scheduler2.x.spring.xml");
 		System.out.println(ac);

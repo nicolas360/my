@@ -5,7 +5,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,7 +19,7 @@ public class Client {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PropertyConfigurator.configure(Client.class.getResource("log4j-client.properties"));
+		//		PropertyConfigurator.configure(Client.class.getResource("log4j-client.properties"));
 
 		ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
 		service.scheduleAtFixedRate(new My(), 0, 5, TimeUnit.SECONDS);

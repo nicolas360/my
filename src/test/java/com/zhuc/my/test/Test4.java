@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+
+import com.google.common.base.CharMatcher;
 
 public class Test4 {
 
@@ -27,5 +30,14 @@ public class Test4 {
 		List<String> list2 = new ArrayList<String>(Arrays.asList(new String[] { "1", "3" }));
 		list2.add("4"); // right
 
+		System.out.println(StringUtils.trim("  123   "));
+		System.out.println(Arrays.toString("  123   ".getBytes()));
+
+		System.out.println(CharMatcher.INVISIBLE.removeFrom(" 1 2  3   "));
+
+		String s = CharMatcher.INVISIBLE.trimLeadingFrom(" 1     2  3   ");
+		String s2 = CharMatcher.INVISIBLE.trimTrailingFrom(s);
+
+		System.out.println(Arrays.toString(s2.getBytes()));
 	}
 }

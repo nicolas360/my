@@ -12,12 +12,18 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.7</jdk.version>
 
-		<spring.version>3.2.9.RELEASE</spring.version>
-		<druid.version>1.0.5</druid.version>
-		<slf4j.version>1.7.5</slf4j.version>
-		<httpclient.version>4.3.1</httpclient.version>
-		<hibernate.version>4.2.7.Final</hibernate.version>
-	</properties>
+		<spring.version>3.2.11.RELEASE</spring.version>
+        <spring-data-mongodb.version>1.3.2.RELEASE</spring-data-mongodb.version>
+        <spring-data-redis.version>1.4.0.RELEASE</spring-data-redis.version>
+        <druid.version>1.0.5</druid.version>
+        <logback-classic.version>1.1.2</logback-classic.version>
+        <slf4j.version>1.7.5</slf4j.version>
+        <httpclient.version>4.3.5</httpclient.version>
+        <hibernate.version>4.2.7.Final</hibernate.version>
+        <guava.version>18.0</guava.version>
+        <netty-all.version>4.0.19.Final</netty-all.version>
+        <shiro-spring.version>1.2.3</shiro-spring.version>
+    </properties>
 
 	<!-- 不同的打包环境 -->
 	<profiles>
@@ -76,32 +82,27 @@
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		
+		<!-- 日志logback -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-classic.version}</version>
+		</dependency>
 
 		<!-- quartz -->
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>1.8.4</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.quartz-scheduler</groupId> -->
+<!-- 			<artifactId>quartz</artifactId> -->
+<!-- 			<version>1.8.6</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
 			<artifactId>quartz</artifactId>
 			<version>2.2.1</version>
 		</dependency>
 
-		<!-- 日志slf4j -->
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.slf4j</groupId> -->
-		<!-- <artifactId>slf4j-log4j12</artifactId> -->
-		<!-- <version>${slf4j.version}</version> -->
-		<!-- </dependency> -->
+		
 
 		<!-- 连接池 -->
 		<dependency>
@@ -126,37 +127,37 @@
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.3</version>
+			<version>2.4</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>17.0</version>
+			<version>${guava.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>net.sf.dozer</groupId>
 			<artifactId>dozer</artifactId>
-			<version>5.4.0</version>
+			<version>5.5.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.mina</groupId>
 			<artifactId>mina-core</artifactId>
-			<version>2.0.7</version>
+			<version>2.0.8</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty</artifactId>
-			<version>3.9.0.Final</version>
+			<version>3.9.4.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
-			<version>4.0.19.Final</version>
+			<version>${netty-all.version}</version>
 		</dependency>
 
 		<!-- hibernate -->
@@ -208,7 +209,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
-			<version>1.4.0.RELEASE</version>
+			<version>${spring-data-redis.version}</version>
 		</dependency>
 
 		<!-- memcached -->
@@ -257,7 +258,7 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>1.3.2.RELEASE</version>
+			<version>${spring-data-mongodb.version}</version>
 		</dependency>
 
 		<dependency>
@@ -305,7 +306,13 @@
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-spring</artifactId>
-			<version>1.2.3</version>
+			<version>${shiro-spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lmax</groupId>
+			<artifactId>disruptor</artifactId>
+			<version>3.3.0</version>
 		</dependency>
 
 	</dependencies>

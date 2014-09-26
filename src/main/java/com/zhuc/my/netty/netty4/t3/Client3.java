@@ -10,6 +10,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
+
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +42,8 @@ public class Client3 {
 					.handler(new ChannelInitializer<SocketChannel>() {
 						@Override
 						public void initChannel(SocketChannel ch) throws Exception {
-							ch.pipeline().addLast(new LoggingHandler(LogLevel.INFO), new MyClientHandler3());
+							ch.pipeline().addLast(new LoggingHandler(LogLevel.INFO), new MyClientEncoder(),
+									new IdleStateHandler(0, 0, 5, TimeUnit.SECONDS), new MyClientHandler3());
 						}
 					});
 
@@ -56,5 +60,4 @@ public class Client3 {
 			group.shutdownGracefully();
 		}
 	}
-
 }

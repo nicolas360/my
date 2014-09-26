@@ -42,4 +42,28 @@ public class MyServerHandler3 extends ChannelInboundHandlerAdapter {
 		logger.debug("bytes: " + sb.toString());
 	}
 
+	/* (non-Javadoc)
+	 * @see io.netty.channel.ChannelInboundHandlerAdapter#exceptionCaught(io.netty.channel.ChannelHandlerContext, java.lang.Throwable)
+	 */
+	@Override
+	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+		logger.error("exceptionCaught", cause);
+	}
+
+	/* (non-Javadoc)
+	 * @see io.netty.channel.ChannelInboundHandlerAdapter#channelUnregistered(io.netty.channel.ChannelHandlerContext)
+	 */
+	@Override
+	public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+		logger.debug("channelUnregistered");
+	}
+
+	/* (non-Javadoc)
+	 * @see io.netty.channel.ChannelInboundHandlerAdapter#channelInactive(io.netty.channel.ChannelHandlerContext)
+	 */
+	@Override
+	public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+		logger.debug("channelInactive");
+	}
+
 }
