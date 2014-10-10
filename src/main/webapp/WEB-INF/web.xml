@@ -31,4 +31,13 @@
 		<servlet-name>LongConnectServlet</servlet-name>
 		<url-pattern>/servlet/longConnectServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GZipServlet</servlet-name>
+		<servlet-class>com.zhuc.my.jdk.gzip.GZipServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GZipServlet</servlet-name>
+		<url-pattern>/servlet/gzipServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
