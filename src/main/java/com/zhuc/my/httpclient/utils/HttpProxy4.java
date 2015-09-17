@@ -16,6 +16,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.HttpClientUtils;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
@@ -45,6 +46,38 @@ public class HttpProxy4 {
 			logger.debug("result========{}", new Object[] { result });
 		} catch (Exception e) {
 			logger.error("", e);
+		} finally {
+			HttpClientUtils.closeQuietly(resp);
+			HttpClientUtils.closeQuietly(httpclient);
+		}
+
+		return result;
+	}
+
+	/**
+	 * restful风格post请求
+	 * @param uri
+	 * @param s
+	 * @return
+	 * @throws IOException
+	 */
+	public String restPost(String uri, String s) throws IOException {
+		String result = null;
+
+		HttpPost httpPost = new HttpPost(uri);
+		StringEntity stringEntity = new StringEntity(s);
+		stringEntity.setContentType("application/json");
+		httpPost.setEntity(stringEntity);
+
+		CloseableHttpResponse resp = httpclient.execute(httpPost);
+		try {
+			logger.debug("params: {}", new Object[]{s});
+			logger.debug("status: {}", new Object[]{resp.getStatusLine()});
+
+			HttpEntity entity = resp.getEntity();
+			result = EntityUtils.toString(entity, "UTF-8");
+
+			logger.debug("result========{}", new Object[]{result});
 		} finally {
 			HttpClientUtils.closeQuietly(resp);
 			HttpClientUtils.closeQuietly(httpclient);

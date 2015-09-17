@@ -1,0 +1,72 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试RetJ  restful ajax post</title>
+    <script language="javascript" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/json2.js"></script>
+    <script language="javascript" type="text/javascript">
+        var virDir = "InterfaceService";
+        var arrOrder = new Array();
+        function BtnAction_OnClick() {
+            try {
+                var cmd = $("#txtCmd").val().replace(/(^\s+)|(\s+$)/g, "");
+                var paramsType = $("#txtParamsType").val().replace(/(^\s+)|(\s+$)/g, "");
+                var paramsValue = $("#txtParamsValue").val().replace(/(^\s+)|(\s+$)/g, "");
+                var requestCode = $("#txtRequestCode").val().replace(/(^\s+)|(\s+$)/g, "");
+
+                var host = window.location.host;
+                var baseUrl = window.location.href;
+                if (baseUrl.toLocaleLowerCase().indexOf(virDir.toLocaleLowerCase()) > 0) {
+                    baseUrl = "http://" + host + "/" + virDir + "/REST/ReceiveMessageRetJ";
+                }
+                else {
+                    baseUrl = "http://" + host + "/REST/ReceiveMessageRetJ";
+                }
+
+                //var jsonData = '{"Cmd":"' + cmd + '","ParamsType":"' + paramsType + '","ParamsValue":"' + paramsValue + '","RequestCode":"' + requestCode + '"}';
+                var jsonObj = { Cmd: cmd, ParamsType: paramsType, ParamsValue: paramsValue, RequestCode: requestCode };
+                var jsonData = JSON.stringify(jsonObj)
+                $("#taJsonData").val(baseUrl + "\n" + jsonData);
+                $("#txtRetVal").val("");
+
+                $.ajax({
+                    url: baseUrl,
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonData,
+                    dataType: "json",
+                    success: function (data) {
+                        //$("#txtRetVal").val(JSON.stringify(data));
+                        $("#txtRetVal").val(data);
+                    }
+                });
+            }
+            catch (err) {
+                $("#taJsonData").val(err.message);
+            }
+        }
+    </script>
+    <style type="text/css">
+        #taJsonData
+        {
+            height: 150px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+<p>
+    <br />[批处理地址（内网）：http://10.107.0.238:7001/InterfaceService/REST/ReceiveMessageRetJ]
+    <br />[批处理地址（公网）：http://221.181.71.138:7001/InterfaceService/REST/ReceiveMessageRetJ]
+    <br />[路径：ReceiveMessage][POST方式][返回格式JSON]
+    <br />指令[cmd]：<input id="txtCmd" type="text" />
+    <br />参数类型[paramsType]：<input id="txtParamsType" type="text" />
+    <br />参数内容[paramsValue]：<input id="txtParamsValue" type="text" />
+    <br />请求码[requestCode]：<input id="txtRequestCode" type="text" />
+    <br /><input id="btnAction" type="button" value="测试" onclick="BtnAction_OnClick();return false;"/>
+    <br />JSON数据：<textarea id="taJsonData" rows="100" cols="100"></textarea>
+    <br />返回值：<input id="txtRetVal" type="text" />
+</p>
+</body>
+</html>
